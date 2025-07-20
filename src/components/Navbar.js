@@ -1,6 +1,21 @@
-import { FiGlobe, FiMenu } from "react-icons/fi";
+import { FiGlobe, FiMenu, FiX } from "react-icons/fi";
+import { useEffect } from "react";
 
 function Navbar() {
+  useEffect(() => {
+    const handleScroll = () => {
+      const navbar = document.querySelector(".navbar");
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div style={{ backgroundColor: "#b2aaaa52" }}>
       <nav className="navbar navbar-expand-lg shadow-sm py-3">
@@ -79,6 +94,99 @@ function Navbar() {
           </div>
         </div>
       </nav>
+
+      <style>{`
+        @media (max-width: 991px) {
+          .navbar {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            z-index: 1040 !important;
+            transition: background-color 0.3s ease !important;
+          }
+          .navbar.scrolled {
+            background-color: #b8babdff !important;
+          }
+          .navbar-collapse {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url('/images/hero-bg.jpg') !important;
+            background-size: cover !important;
+            background-position: center !important;
+            backdrop-filter: blur(5px) !important;
+            z-index: 1050 !important;
+            display: none !important;
+            padding: 20px !important;
+          }
+          .navbar-collapse.show {
+            display: flex !important;
+            flex-direction: column !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+          }
+          .navbar-nav {
+            text-align: left !important;
+            margin: 60px 0 0 0 !important;
+            padding: 0 !important;
+            width: 100% !important;
+          }
+          .nav-item {
+            margin: 15px 0 !important;
+            list-style: none !important;
+          }
+          .nav-link {
+            font-size: 18px !important;
+            color: white !important;
+            text-decoration: none !important;
+            font-weight: 400 !important;
+          }
+          .dropdown-menu {
+            background-color: transparent !important;
+            border: none !important;
+            text-align: left !important;
+            box-shadow: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+          }
+          .dropdown-item {
+            color: white !important;
+            font-size: 16px !important;
+            padding: 8px 0 !important;
+          }
+          .btn {
+            position: absolute !important;
+            bottom: 250px !important;
+            left: 20px !important;
+            font-size: 18px !important;
+            color: white !important;
+            background: none !important;
+            border: none !important;
+            padding: 0 !important;
+           border-bottom: 1px solid rgba(255, 255, 255, 1) !important; width: 100% !important;
+            padding-bottom: 10px !important;
+          }
+          .navbar-toggler {
+            position: relative !important;
+            z-index: 1060 !important;
+          }
+          .navbar-collapse.show + .navbar-toggler {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 1060 !important;
+          }
+          .navbar-collapse.show .navbar-toggler {
+            position: fixed !important;
+            top: 20px !important;
+            right: 20px !important;
+            z-index: 1060 !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
