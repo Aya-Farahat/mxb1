@@ -16,7 +16,7 @@ function InvestmentPartners() {
         Our Investment Partners
       </h3>
 
-      <div className="row justify-content-between g-4">
+      <div className="row justify-content-between g-4 partners-row">
         {partners.map((partner, index) => (
           <motion.div
             key={index}
@@ -39,6 +39,39 @@ function InvestmentPartners() {
           </motion.div>
         ))}
       </div>
+
+      <style>{`
+        @media (max-width: 767px) {
+          .partners-row {
+            display: flex !important;
+            flex-wrap: nowrap !important;
+            overflow-x: auto !important;
+            gap: 15px !important;
+            padding-bottom: 10px !important;
+            scroll-snap-type: x mandatory !important;
+            scroll-behavior: smooth !important;
+          }
+          .partners-row::-webkit-scrollbar {
+            display: none;
+          }
+          .partners-row {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+          .partners-row .col-6, .partners-row .col-sm-4, .partners-row .col-md-3, .partners-row .col-lg-2 {
+            flex: 0 0 calc(33.333% - 10px) !important;
+            min-width: calc(33.333% - 10px) !important;
+            max-width: calc(33.333% - 10px) !important;
+            scroll-snap-align: start !important;
+          }
+          .partners-row .col-6:nth-child(-n+3) img, .partners-row .col-sm-4:nth-child(-n+3) img, .partners-row .col-md-3:nth-child(-n+3) img, .partners-row .col-lg-2:nth-child(-n+3) img {
+            max-height: 120px !important;
+          }
+          .partners-row .col-6:nth-child(n+4) img, .partners-row .col-sm-4:nth-child(n+4) img, .partners-row .col-md-3:nth-child(n+4) img, .partners-row .col-lg-2:nth-child(n+4) img {
+            max-height: 100px !important;
+          }
+        }
+      `}</style>
     </div>
   );
 }
