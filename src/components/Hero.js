@@ -20,7 +20,7 @@ const Hero = () => {
       {/* العنوان */}
       <motion.h1
         className="fw-bold fs-1 text-dark"
-        style={{ letterSpacing: "11px", marginBottom: "-6px" }}
+        style={{ letterSpacing: "11px", marginBottom: "7px" }}
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8 }}
@@ -30,8 +30,8 @@ const Hero = () => {
 
       {/* العنصر الأول */}
       <motion.p
-        className="text-light fs-4"
-        style={glassStyle}
+        className="text-light fs-4 "
+        style={{ ...glassStyle, marginTop: "3px", borderRadius: "0" }}
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.3 }}
@@ -41,15 +41,18 @@ const Hero = () => {
 
       {/* العنصر الثاني */}
       <motion.div
-        style={{ ...glassStyle, marginTop: "-10px" }}
+        style={{ ...glassStyle, marginTop: "-5px", borderRadius: "0" }}
         initial={{ opacity: 0, x: -100 }}
         animate={{ opacity: 1, x: 0 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <p className="text-light fs-4" style={{ marginBottom: "-20px" }}>
+        <p className="text-light fs-4" style={{ marginBottom: "-10px" }}>
           INVESTING
         </p>
-        <h2 className="fw-bold my-3 text-light" style={{ letterSpacing: "6px" }}>
+        <h2
+          className="fw-bold my-3 text-light"
+          style={{ letterSpacing: "6px" }}
+        >
           <span className="d-inline-block fs-4 me-2">WITH</span>
           <span className="d-inline-block">INTEGRITY</span>
         </h2>
